@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { JuegoTriquiI } from '../../../interface/juegoTriquiI';
+import { TrikiService } from '../../../services/triki.service';
 
 @Component({
   selector: 'app-triquiplaymodal',
@@ -10,13 +11,15 @@ import { JuegoTriquiI } from '../../../interface/juegoTriquiI';
 export class TriquiplaymodalComponent implements OnInit {
   verificado = true;
 
-  juegoTriqui: JuegoTriquiI;
-  form: FormGroup;
+  public juegoTriqui: JuegoTriquiI;
+  public copiaJuegoTriki: JuegoTriquiI;
+  public form: FormGroup;
+  public code = 0;
 
-  constructor() {}
+  constructor(private triquiService: TrikiService) {}
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl(null, [Validators.required])
+      nombre: new FormControl(null, [Validators.required])
     });
   }
 
@@ -29,9 +32,38 @@ export class TriquiplaymodalComponent implements OnInit {
     }
   }
 
-  public acceder(name: string): any {
-   this.juegoTriqui = this.form.value;
-   this.juegoTriqui.codigo = 123;
-   console.log(this.juegoTriqui);
+
+  public acceder(): void {
+    this.code += 1;
+    this.juegoTriqui = this.form.value;
+    this.juegoTriqui.codigo = this.code;
+    this.juegoTriqui.estado = false;
+    this.juegoTriqui.fecha = this.getDateTime();
+    this.triquiService.addJuegoTriki(this.juegoTriqui);
   }
+
+
+  getDateTime(): any {
+    const date = new Date();
+
+    const hour = date.getHours();
+    const h = (hour < 10 ? '0' : '') + hour;
+
+    const min = date.getMinutes();
+    const m = (min < 10 ? '0' : '') + min;
+
+    const sec = date.getSeconds();
+    const s = (sec < 10 ? '0' : '') + sec;
+
+    const year = date.getFullYear();
+
+    const month = date.getMonth() + 1;
+    const mes = (month < 10 ? '0' : '') + month;
+
+    const day = date.getDate();
+    const dia = (day < 10 ? '0' : '') + day;
+
+    return year + ':' + mes + ':' + dia + ':' + h + ':' + m + ':' + s;
+
+}
 }

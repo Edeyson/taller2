@@ -17,12 +17,13 @@ import { NumerodeperdidasComponent } from './components/triqui/numerodeperdidas/
 import { CantidadjuegosComponent } from './components/triqui/cantidadjuegos/cantidadjuegos.component';
 import { CampeonComponent } from './components/triqui/campeon/campeon.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-const rutas: Route[] = [{path:'', component:InicioComponent},
-                        {path:'Triqui', component:TriquiinicioComponent},
-                        {path:'PPT', component:PptComponent},
-                        {path:'Clima', component:ClimaComponent},
-                        {path:'TriquiPlay', component:TriquiplayComponent}
+const rutas: Route[] = [{path: '', component: InicioComponent},
+                        {path: 'Triqui', component: TriquiinicioComponent},
+                        {path: 'PPT', component: PptComponent},
+                        {path: 'Clima', component: ClimaComponent},
+                        {path: 'TriquiPlay', component: TriquiplayComponent}
                        ];
 
 @NgModule({
@@ -42,6 +43,7 @@ const rutas: Route[] = [{path:'', component:InicioComponent},
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot(rutas),
+    HttpClientModule
     // HttpClientModule
   ],
   providers: [],
