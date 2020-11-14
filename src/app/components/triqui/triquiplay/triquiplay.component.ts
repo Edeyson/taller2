@@ -9,7 +9,8 @@ import { TrikiService } from '../../../services/triki.service';
 export class TriquiplayComponent implements OnInit {
   @Input() jugadorActual: string;
 
-  constructor(private trikiService: TrikiService) {}
+
+  constructor(private trikiService: TrikiService) { }
 
   tablero = [
     ['', '', ''],
@@ -19,36 +20,68 @@ export class TriquiplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.jugadorActual = this.trikiService.getJugadorActual();
+
   }
 
   public terminar(): any {
     console.log(this.tablero);
     this.verificarGanador();
+
   }
 
   private verificarGanador() {
     let letra = this.verificarGanador00();
-    if (letra !== 'E') {
-      if (letra === 'X') {
-        alert('Usted es el Ganador');
-        return;
-      }
-    }
-    if (letra === 'X') {
-      alert('Usted es el Ganador');
-      return;
-    } else {
-      letra = this.verificarGanador01();
-      if (letra === 'X') {
-        alert('Usted es el Ganador');
+    if (letra !== "E" && letra !== "") {
+      if (letra === "X") {
+        document.getElementById("state").innerHTML = "Usted Ganó";
         return;
       } else {
+        document.getElementById("state").innerHTML = "Ganó la maquina";
+        return;
+      }
+    } else {
+      letra = this.verificarGanador01();
+      if (letra !== "E" && letra !== "") {
+        if (letra === "X") {
+          document.getElementById("state").innerHTML = "Usted Ganó";
+          return;
+        } else {
+          document.getElementById("state").innerHTML = "Ganó la maquina";
+          return;
+        }
+      } else {
+        letra = this.verificarGanador02();
+        if (letra !== "E" && letra !== "") {
+          if (letra === "X") {
+            document.getElementById("state").innerHTML = "Usted Ganó";
+            return;
+          } else {
+            document.getElementById("state").innerHTML = "Ganó la maquina";
+            return;
+          }
+        } else {
+          letra = this.verificarGanador20();
+          if (letra !== "E" && letra !== "") {
+            if (letra === "X") {
+              document.getElementById("state").innerHTML = "Usted Ganó";
+              return;
+            } else {
+              document.getElementById("state").innerHTML = "Ganó la maquina";
+              return;
+            }
+          }else{
+            document.getElementById("state").innerHTML = "Empate";
+          }
+        }
       }
     }
+
   }
 
-  private verificarGanador00(): any {
-    const letra = this.tablero[0][0];
+
+
+  private verificarGanador00() {
+    let letra = this.tablero[0][0];
     if (this.tablero[0][1] === letra && this.tablero[0][2] === letra) {
       return letra;
     } else {
@@ -60,7 +93,7 @@ export class TriquiplayComponent implements OnInit {
         }
       }
     }
-    return 'E';
+    return "E";
   }
 
   private verificarGanador01() {
@@ -70,6 +103,29 @@ export class TriquiplayComponent implements OnInit {
     }
     return 'E';
   }
+
+  private verificarGanador02() {
+    let letra = this.tablero[0][2];
+    if (this.tablero[1][1] === letra && this.tablero[2][0] === letra) {
+      return letra;
+    } else {
+      if (this.tablero[1][2] === letra && this.tablero[2][2] === letra) {
+        return letra;
+      }
+    }
+    return "E";
+  }
+
+
+  private verificarGanador20() {
+    let letra = this.tablero[2][0];
+    if (this.tablero[2][1] === letra && this.tablero[2][2] === letra) {
+      return letra;
+    }
+    return 'E';
+  }
+
+
 
   // botones primera fila
 
@@ -116,6 +172,7 @@ export class TriquiplayComponent implements OnInit {
     console.log(this.tablero);
     this.juegoMaquina();
   }
+
   public boton12() {
     if (this.tablero[1][2] === '') {
       this.tablero[1][2] = 'X';
@@ -124,6 +181,7 @@ export class TriquiplayComponent implements OnInit {
     console.log(this.tablero);
     this.juegoMaquina();
   }
+
 
   // botones tercera fila
 
@@ -135,6 +193,7 @@ export class TriquiplayComponent implements OnInit {
     console.log(this.tablero);
     this.juegoMaquina();
   }
+
   public boton21() {
     if (this.tablero[2][1] === '') {
       this.tablero[2][1] = 'X';
@@ -143,6 +202,7 @@ export class TriquiplayComponent implements OnInit {
     console.log(this.tablero);
     this.juegoMaquina();
   }
+
   public boton22() {
     if (this.tablero[2][2] === '') {
       this.tablero[2][2] = 'X';
@@ -151,6 +211,7 @@ export class TriquiplayComponent implements OnInit {
     console.log(this.tablero);
     this.juegoMaquina();
   }
+
 
   // juego de la maquina
 
@@ -220,5 +281,6 @@ export class TriquiplayComponent implements OnInit {
         }
       }
     }
+    this.verificarGanador();
   }
 }
