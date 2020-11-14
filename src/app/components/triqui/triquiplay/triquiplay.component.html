@@ -62,19 +62,19 @@
             <td>
                 <div class="tictactoe">
                     <div class="row">
-                        <button style="background-color:slategray" (click)="boton00()" id="cell-0-0" data-row="0" data-column="0" class="cell"></button>
-                        <button style="background-color:slategray" (click)="boton01()" id="cell-0-1" data-row="0" data-column="1" class="cell"></button>
-                        <button style="background-color:slategray" (click)="boton02()" id="cell-0-2" data-row="0" data-column="2" class="cell"></button>
+                        <button style="background-color:slategray" (click)="boton00()" id="cell-0-0" data-row="0" data-column="0" class="cell" [disabled]="dehabilitarTablero"></button>
+                        <button style="background-color:slategray" (click)="boton01()" id="cell-0-1" data-row="0" data-column="1" class="cell" [disabled]="dehabilitarTablero"></button>
+                        <button style="background-color:slategray" (click)="boton02()" id="cell-0-2" data-row="0" data-column="2" class="cell" [disabled]="dehabilitarTablero"></button>
                     </div>
                     <div class="row">
-                        <button style="background-color:slategray" (click)="boton10()" id="cell-1-0" data-row="1" data-column="0" class="cell"></button>
-                        <button style="background-color:slategray" (click)="boton11()" id="cell-1-1" data-row="1" data-column="1" class="cell"></button>
-                        <button style="background-color:slategray" (click)="boton12()" id="cell-1-2" data-row="1" data-column="2" class="cell"></button>
+                        <button style="background-color:slategray" (click)="boton10()" id="cell-1-0" data-row="1" data-column="0" class="cell" [disabled]="dehabilitarTablero"></button>
+                        <button style="background-color:slategray" (click)="boton11()" id="cell-1-1" data-row="1" data-column="1" class="cell" [disabled]="dehabilitarTablero"></button>
+                        <button style="background-color:slategray" (click)="boton12()" id="cell-1-2" data-row="1" data-column="2" class="cell" [disabled]="dehabilitarTablero"></button>
                     </div>
                     <div class="row">
-                        <button style="background-color:slategray" (click)="boton20()" id="cell-2-0" data-row="2" data-column="0" class="cell"></button>
-                        <button style="background-color:slategray" (click)="boton21()" id="cell-2-1" data-row="2" data-column="1" class="cell"></button>
-                        <button style="background-color:slategray" (click)="boton22()" id="cell-2-2" data-row="2" data-column="2" class="cell"></button>
+                        <button style="background-color:slategray" (click)="boton20()" id="cell-2-0" data-row="2" data-column="0" class="cell" [disabled]="dehabilitarTablero"></button>
+                        <button style="background-color:slategray" (click)="boton21()" id="cell-2-1" data-row="2" data-column="1" class="cell" [disabled]="dehabilitarTablero"></button>
+                        <button style="background-color:slategray" (click)="boton22()" id="cell-2-2" data-row="2" data-column="2" class="cell" [disabled]="dehabilitarTablero"></button>
                     </div>
                 </div>
                 <br>

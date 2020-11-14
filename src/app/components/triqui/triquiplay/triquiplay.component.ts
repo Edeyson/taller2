@@ -10,6 +10,7 @@ export class TriquiplayComponent implements OnInit {
   @Input() jugadorActual: string;
 
 
+  dehabilitarTablero = false;
   constructor(private trikiService: TrikiService) { }
 
   tablero = [
@@ -25,8 +26,16 @@ export class TriquiplayComponent implements OnInit {
 
   public terminar(): any {
     console.log(this.tablero);
-    this.verificarGanador();
 
+
+  }
+
+  reiniciarTablero(){
+    //---
+  }
+
+  private invalidarTablero(){
+    this.dehabilitarTablero = true;
   }
 
   private verificarGanador() {
@@ -34,9 +43,11 @@ export class TriquiplayComponent implements OnInit {
     if (letra !== "E" && letra !== "") {
       if (letra === "X") {
         document.getElementById("state").innerHTML = "Usted Ganó";
+        this.invalidarTablero();
         return;
       } else {
         document.getElementById("state").innerHTML = "Ganó la maquina";
+        this.invalidarTablero();
         return;
       }
     } else {
@@ -44,9 +55,11 @@ export class TriquiplayComponent implements OnInit {
       if (letra !== "E" && letra !== "") {
         if (letra === "X") {
           document.getElementById("state").innerHTML = "Usted Ganó";
+          this.invalidarTablero();
           return;
         } else {
           document.getElementById("state").innerHTML = "Ganó la maquina";
+          this.invalidarTablero();
           return;
         }
       } else {
@@ -54,9 +67,11 @@ export class TriquiplayComponent implements OnInit {
         if (letra !== "E" && letra !== "") {
           if (letra === "X") {
             document.getElementById("state").innerHTML = "Usted Ganó";
+            this.invalidarTablero();
             return;
           } else {
             document.getElementById("state").innerHTML = "Ganó la maquina";
+            this.invalidarTablero();
             return;
           }
         } else {
@@ -64,9 +79,11 @@ export class TriquiplayComponent implements OnInit {
           if (letra !== "E" && letra !== "") {
             if (letra === "X") {
               document.getElementById("state").innerHTML = "Usted Ganó";
+              this.invalidarTablero();
               return;
             } else {
               document.getElementById("state").innerHTML = "Ganó la maquina";
+              this.invalidarTablero();
               return;
             }
           }else{
@@ -133,25 +150,28 @@ export class TriquiplayComponent implements OnInit {
     if (this.tablero[0][0] === '') {
       this.tablero[0][0] = 'X';
       document.getElementById('cell-0-0').innerHTML = this.tablero[0][0];
-    }
-    console.log(this.tablero);
+          console.log(this.tablero);
     this.juegoMaquina();
+    }
+
   }
   public boton01() {
     if (this.tablero[0][1] === '') {
       this.tablero[0][1] = 'X';
       document.getElementById('cell-0-1').innerHTML = this.tablero[0][1];
-    }
-    console.log(this.tablero);
+          console.log(this.tablero);
     this.juegoMaquina();
+    }
+
   }
   public boton02() {
     if (this.tablero[0][2] === '') {
       this.tablero[0][2] = 'X';
       document.getElementById('cell-0-2').innerHTML = this.tablero[0][2];
-    }
-    console.log(this.tablero);
+          console.log(this.tablero);
     this.juegoMaquina();
+    }
+
   }
 
   // botones segunda fila
@@ -160,26 +180,29 @@ export class TriquiplayComponent implements OnInit {
     if (this.tablero[1][0] === '') {
       this.tablero[1][0] = 'X';
       document.getElementById('cell-1-0').innerHTML = this.tablero[1][0];
-    }
-    console.log(this.tablero);
+          console.log(this.tablero);
     this.juegoMaquina();
+    }
+
   }
   public boton11() {
     if (this.tablero[1][1] === '') {
       this.tablero[1][1] = 'X';
       document.getElementById('cell-1-1').innerHTML = this.tablero[1][1];
-    }
-    console.log(this.tablero);
+          console.log(this.tablero);
     this.juegoMaquina();
+    }
+
   }
 
   public boton12() {
     if (this.tablero[1][2] === '') {
       this.tablero[1][2] = 'X';
       document.getElementById('cell-1-2').innerHTML = this.tablero[1][2];
-    }
-    console.log(this.tablero);
+          console.log(this.tablero);
     this.juegoMaquina();
+    }
+
   }
 
 
@@ -189,27 +212,30 @@ export class TriquiplayComponent implements OnInit {
     if (this.tablero[2][0] === '') {
       this.tablero[2][0] = 'X';
       document.getElementById('cell-2-0').innerHTML = this.tablero[2][0];
-    }
-    console.log(this.tablero);
+          console.log(this.tablero);
     this.juegoMaquina();
+    }
+
   }
 
   public boton21() {
     if (this.tablero[2][1] === '') {
       this.tablero[2][1] = 'X';
       document.getElementById('cell-2-1').innerHTML = this.tablero[2][1];
-    }
-    console.log(this.tablero);
+          console.log(this.tablero);
     this.juegoMaquina();
+    }
+
   }
 
   public boton22() {
     if (this.tablero[2][2] === '') {
       this.tablero[2][2] = 'X';
       document.getElementById('cell-2-2').innerHTML = this.tablero[2][2];
-    }
-    console.log(this.tablero);
+          console.log(this.tablero);
     this.juegoMaquina();
+    }
+
   }
 
 
