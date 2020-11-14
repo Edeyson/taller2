@@ -12,8 +12,7 @@ export class TrikiService {
 
 
   addJuegoTriki(juegoTriki: JuegoTriquiI): any {
-    // localStorage.setItem('triki', JSON.stringify(juegoTriki));
-    this.jugadorActual = juegoTriki.nombre;
+    localStorage.setItem('play', JSON.stringify(juegoTriki.nombre));
     return this.http.post<JuegoTriquiI>(Config.baseUrl + 'triki/add', {
       codigo: juegoTriki.codigo,
       nombre: juegoTriki.nombre,
@@ -30,7 +29,6 @@ export class TrikiService {
   }
 
   getJugadorActual(): string {
-    console.log(this.jugadorActual);
-    return this.jugadorActual;
+    return JSON.parse(localStorage.getItem('play'));
   }
 }
