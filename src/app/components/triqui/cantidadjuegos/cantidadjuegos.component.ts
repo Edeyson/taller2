@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TrikiService } from '../../../services/triki.service';
+import { JuegoTriquiI } from '../../../interface/juegoTriquiI';
 
 @Component({
   selector: 'app-cantidadjuegos',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CantidadjuegosComponent implements OnInit {
 
-  constructor() { }
+  misJuegos: JuegoTriquiI[] = [];
+  constructor(private trikiService: TrikiService) { }
 
   ngOnInit(): void {
+    this.trikiService.getAllJuegos().subscribe(
+      (succes: any) => {
+        this.misJuegos = succes;
+      }
+    );
   }
 
 }
