@@ -13,7 +13,11 @@
                         <div class="col-md-7">
                             <div class="form-group">
                                 <label>Cantidad de juegos almacenados:</label>
-                                <label id="cantidadalmacenada">0</label>
+                                <label id="cantidadalmacenada"> {{misJuegos.length}} </label>
+                            </div>
+
+                            <div *ngFor="let item of misJuegos">
+                                <label for=""> {{item.nombre}} </label>
                             </div>
 
                         </div>
