@@ -14,7 +14,7 @@
                             <div class="col-md-7">
                                 <div class="form-group">
                                     <label>Ingresa tu nombre:</label>
-                                    <input type="text" name="name" id="name" placeholder="nombre" required #name formControlName="name">
+                                    <input type="text" name="name" id="name" placeholder="nombre" required #name formControlName="nombre">
                                 </div>
                                 <input type="submit" class="btn btn-primary" id="registrar" (click)="registrarNombre(name.value)" value="Registrar">
                             </div>
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a><button class="btn btn-success" id="play" [disabled]="verificado" (click)="acceder(name.value)">Play</button></a>
+                <a href="TriquiPlay"><button class="btn btn-success" id="play" [disabled]="verificado" (click)="acceder()">Play</button></a>
             </div>
         </div>
     </div>
