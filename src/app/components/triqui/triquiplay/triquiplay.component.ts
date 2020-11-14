@@ -16,5 +16,4 @@ export class TriquiplayComponent implements OnInit {
   }
 
 
-
 }
