@@ -16,6 +16,7 @@ import { TriquiplaymodalComponent } from './components/triqui/triquiplaymodal/tr
 import { NumerodeperdidasComponent } from './components/triqui/numerodeperdidas/numerodeperdidas.component';
 import { CantidadjuegosComponent } from './components/triqui/cantidadjuegos/cantidadjuegos.component';
 import { CampeonComponent } from './components/triqui/campeon/campeon.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const rutas: Route[] = [{path:'', component:InicioComponent},
                         {path:'Triqui', component:TriquiinicioComponent},
@@ -35,11 +36,11 @@ const rutas: Route[] = [{path:'', component:InicioComponent},
     NumerodeperdidasComponent,
     CantidadjuegosComponent,
     CampeonComponent,
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(rutas),
     // HttpClientModule
   ],
