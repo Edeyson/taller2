@@ -26,12 +26,7 @@ export class TriquiplayComponent implements OnInit {
 
   public terminar(): any {
     console.log(this.tablero);
-
-
-  }
-
-  reiniciarTablero(){
-    //---
+    alert('gracias por el juego')
   }
 
   private invalidarTablero(){
