@@ -42,7 +42,7 @@ export class TriquiplayComponent implements OnInit {
         alert("Usted es el Ganador");
         return;
       } else {
-  
+        alert("falta");
       }
     }
 
