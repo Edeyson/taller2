@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TrikiService } from '../../../services/triki.service';
 
 @Component({
   selector: 'app-triquiplay',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./triquiplay.component.css']
 })
 export class TriquiplayComponent implements OnInit {
+  @Input() jugadorActual: string;
+
+
+  constructor(private trikiService: TrikiService) { }
 
   tablero = [
     ["", "", ""],
@@ -13,10 +18,12 @@ export class TriquiplayComponent implements OnInit {
     ["", "", ""]
   ];
 
-  constructor() { }
+
 
   ngOnInit(): void {
+    this.jugadorActual = this.trikiService.getJugadorActual();
   }
+
 
 
 

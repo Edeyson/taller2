@@ -7,14 +7,14 @@ import { Config } from '../../../config';
   providedIn: 'root'
 })
 export class TrikiService {
-
+  private  jugadorActual: string;
   constructor(private http: HttpClient) { }
 
 
   addJuegoTriki(juegoTriki: JuegoTriquiI): any {
     // localStorage.setItem('triki', JSON.stringify(juegoTriki));
-    console.log(juegoTriki);
-    return this.http.post<JuegoTriquiI>(Config.baseUrl + 'triki/add',{
+    this.jugadorActual = juegoTriki.nombre;
+    return this.http.post<JuegoTriquiI>(Config.baseUrl + 'triki/add', {
       codigo: juegoTriki.codigo,
       nombre: juegoTriki.nombre,
       estado: juegoTriki.estado,
@@ -27,5 +27,10 @@ export class TrikiService {
         console.log('error', error);
       }
     );
+  }
+
+  getJugadorActual(): string {
+    console.log(this.jugadorActual);
+    return this.jugadorActual;
   }
 }
