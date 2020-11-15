@@ -19,6 +19,7 @@ export class ClimaComponent implements OnInit {
     this.weatherService.getWeather(ciudad)
     .subscribe(
       (acces: any) => {
+        console.log(acces);
         this.weather = acces;
       },
     );
@@ -31,6 +32,5 @@ export class ClimaComponent implements OnInit {
       ciudad.focus();
       return false;
   }
-
 
 }

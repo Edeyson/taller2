@@ -18,7 +18,8 @@
             </div>
             <div class="col-md-6">
                 <div *ngIf="weather" class="card card-body">
-                    <p>Temperatura: {{weather.main.temp}} </p>
+                    <p>País: {{weather.sys.country}} </p>
+                    <p>Temperatura: {{weather.main.temp}} °F </p>
                     <p>Longitud: {{weather.coord.lat}} </p>
                     <p>latitud: {{weather.coord.lon}} </p>
                     <p>Humedad: {{weather.main.humidity}} </p>
