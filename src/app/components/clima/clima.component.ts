@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-clima',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClimaComponent implements OnInit {
 
-  constructor() { }
+  weather;
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
   }
+
+
+  getWeather(ciudad: string): any {
+    this.weatherService.getWeather(ciudad)
+    .subscribe(
+      (acces: any) => {
+        this.weather = acces;
+      },
+    );
+  }
+
+
+  submitLocation(ciudad: HTMLInputElement): any{
+      this.getWeather(ciudad.value);
+      ciudad.value = '';
+      ciudad.focus();
+      return false;
+  }
+
 
 }
