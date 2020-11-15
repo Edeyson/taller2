@@ -35,4 +35,9 @@ export class TrikiService {
   getJuegoActual(): string {
     return JSON.parse(localStorage.getItem('play'));
   }
+
+
+  getAllJuegos(): any{
+    return this.http.get<JuegoTriquiI[]>(`${Config.baseUrl}triki/all`);
+  }
 }
