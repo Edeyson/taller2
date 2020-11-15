@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Config } from 'config';
+import { ClimaI } from '../interface/climaI';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class WeatherService {
         console.log('error', error);
       }
     );
+  }
+
+  public getAll(): any {
+    return this.http.get<ClimaI[]>(`${Config.baseUrl}clima/all`);
   }
 
 

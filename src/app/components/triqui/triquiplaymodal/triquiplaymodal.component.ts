@@ -12,7 +12,6 @@ export class TriquiplaymodalComponent implements OnInit {
   verificado = true;
 
   public juegoTriqui: JuegoTriquiI;
-  public copiaJuegoTriki: JuegoTriquiI;
   public form: FormGroup;
   public code = 0;
 
