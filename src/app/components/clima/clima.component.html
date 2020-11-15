@@ -9,10 +9,14 @@
                 <div class="card card-body">
                     <form [formGroup]="">
                         <div class="form-group">
-                            <label for="">NOmbre ciudad</label>
-                            <input type="text" class="form-control" placeholder="Nombre ciudad" #ciudad>
+                            <label for="">Usuario:</label>
+                            <input type="text" class="form-control" placeholder="Usuario" #usuario>
                         </div>
-                        <button class="btn btn-primary" (click)="submitLocation(ciudad)">Obtener clima</button>
+                        <div class="form-group">
+                            <label for="">Ciudad:</label>
+                            <input type="text" class="form-control" placeholder="Cualquier ciudad del planeta" #ciudad>
+                        </div>
+                        <button class="btn btn-primary" (click)="submitLocation(ciudad)" (click)="guardarDatos(usuario, ciudad)">Obtener clima</button>
                     </form>
                 </div>
             </div>

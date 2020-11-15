@@ -28,9 +28,41 @@ export class ClimaComponent implements OnInit {
 
   submitLocation(ciudad: HTMLInputElement): any{
       this.getWeather(ciudad.value);
-      ciudad.value = '';
       ciudad.focus();
       return false;
   }
+
+
+  public guardarDatos(usuario: HTMLInputElement, ciudad: HTMLInputElement): any{
+    const fecha = this.getDateTime();
+    this.weatherService.guardarDatos(usuario.value, ciudad.value, fecha);
+    usuario.value = '';
+    ciudad.value = '';
+  }
+
+
+  private getDateTime(): any {
+    const date = new Date();
+
+    const hour = date.getHours();
+    const h = (hour < 10 ? '0' : '') + hour;
+
+    const min = date.getMinutes();
+    const m = (min < 10 ? '0' : '') + min;
+
+    const sec = date.getSeconds();
+    const s = (sec < 10 ? '0' : '') + sec;
+
+    const year = date.getFullYear();
+
+    const month = date.getMonth() + 1;
+    const mes = (month < 10 ? '0' : '') + month;
+
+    const day = date.getDate();
+    const dia = (day < 10 ? '0' : '') + day;
+
+    return year + ':' + mes + ':' + dia + ':' + h + ':' + m + ':' + s;
+
+}
 
 }
