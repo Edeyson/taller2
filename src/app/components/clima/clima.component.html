@@ -2,7 +2,31 @@
     <a href="" class="btn btn-primary">Atras</a>
     <div class="Centrar">
 
-
+    </div>
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-body">
+                    <form [formGroup]="">
+                        <div class="form-group">
+                            <label for="">NOmbre ciudad</label>
+                            <input type="text" class="form-control" placeholder="Nombre ciudad" #ciudad>
+                        </div>
+                        <button class="btn btn-primary" (click)="submitLocation(ciudad)">Obtener clima</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div *ngIf="weather" class="card card-body">
+                    <p>Temperatura: {{weather.main.temp}} </p>
+                    <p>Longitud: {{weather.coord.lat}} </p>
+                    <p>latitud: {{weather.coord.lon}} </p>
+                    <p>Humedad: {{weather.main.humidity}} </p>
+                    <p>Presión: {{weather.main.pressure}} </p>
+                    <p>Descripción: {{weather.weather[0].description}} </p>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
