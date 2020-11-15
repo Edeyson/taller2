@@ -17,9 +17,19 @@
                             <input type="text" class="form-control" placeholder="Cualquier ciudad del planeta" #ciudad>
                         </div>
                         <button class="btn btn-primary" (click)="submitLocation(ciudad)" (click)="guardarDatos(usuario, ciudad)">Obtener clima</button>
+                        <button class="btn btn-primary" (click)="submitLocation(ciudad)" (click)="getAll()">Ver consultas</button>
                     </form>
+                    <br>
+                    <div *ngFor="let item of listaClimasConsultados" class="form-group">
+                        <div>
+                            <label for=""> {{item.usuario}} &nbsp; </label>
+                            <label for=""> {{item.fecha}} &nbsp; </label>
+                            <label for=""> {{item.ciudad}} </label>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div *ngIf="weather" class="card card-body">
                     <p>País: {{weather.sys.country}} </p>
