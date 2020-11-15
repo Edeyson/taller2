@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { JuegoTriquiI } from 'src/app/interface/juegoTriquiI';
 import { TrikiService } from '../../../services/triki.service';
 
 @Component({
@@ -7,8 +8,16 @@ import { TrikiService } from '../../../services/triki.service';
   styleUrls: ['./triquiplay.component.css'],
 })
 export class TriquiplayComponent implements OnInit {
-  @Input() jugadorActual: string;
 
+  public play;
+  public juego: JuegoTriquiI ={
+    nombre:"",
+    codigo:0,
+    estado:false,
+    fecha:""
+  };
+  public state = "E";
+  public estadoVista = "--";
 
   dehabilitarTablero = false;
   constructor(private trikiService: TrikiService) { }
@@ -20,14 +29,29 @@ export class TriquiplayComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.jugadorActual = this.trikiService.getJugadorActual();
-
+     this.play= this.trikiService.getJuegoActual();
+    this.juego.nombre = this.play.nombre;
+    this.juego.codigo = this.play.codigo;    
+    this.juego.estado = this.play.estado;
+    this.juego.fecha = this.play.fecha;
   }
 
   public terminar(): any {
     console.log(this.tablero);
-    alert('gracias por el juego')
+
+    if(this.state ==="X"){
+      this.juego.estado = true;
+      this.estadoVista = "Ganó: "+this.juego.estado;
+    }else{
+      if(this.state ==="O"){
+        this.juego.estado = false;
+        this.estadoVista = "Gano: "+this.juego.estado;
+      }
+    }
+    this.trikiService.addJuegoTriki(this.juego);
   }
+
+
 
   private invalidarTablero() {
     this.dehabilitarTablero = true;
@@ -38,10 +62,12 @@ export class TriquiplayComponent implements OnInit {
     if (letra !== "E" && letra !== "") {
       if (letra === "X") {
         document.getElementById("state").innerHTML = "Usted Ganó";
+        this.state = "X"
         this.invalidarTablero();
         return;
       } else {
         document.getElementById("state").innerHTML = "Ganó la maquina";
+        this.state = "O"
         this.invalidarTablero();
         return;
       }
@@ -50,10 +76,12 @@ export class TriquiplayComponent implements OnInit {
       if (letra !== "E" && letra !== "") {
         if (letra === "X") {
           document.getElementById("state").innerHTML = "Usted Ganó";
+          this.state = "X"
           this.invalidarTablero();
           return;
         } else {
           document.getElementById("state").innerHTML = "Ganó la maquina";
+          this.state = "O"
           this.invalidarTablero();
           return;
         }
@@ -62,10 +90,12 @@ export class TriquiplayComponent implements OnInit {
         if (letra !== "E" && letra !== "") {
           if (letra === "X") {
             document.getElementById("state").innerHTML = "Usted Ganó";
+            this.state = "X"
             this.invalidarTablero();
             return;
           } else {
             document.getElementById("state").innerHTML = "Ganó la maquina";
+            this.state = "O"
             this.invalidarTablero();
             return;
           }
@@ -74,10 +104,12 @@ export class TriquiplayComponent implements OnInit {
           if (letra !== "E" && letra !== "") {
             if (letra === "X") {
               document.getElementById("state").innerHTML = "Usted Ganó";
+              this.state = "X"
               this.invalidarTablero();
               return;
             } else {
               document.getElementById("state").innerHTML = "Ganó la maquina";
+              this.state = "O"
               this.invalidarTablero();
               return;
             }
@@ -86,10 +118,12 @@ export class TriquiplayComponent implements OnInit {
             if (letra !== "E" && letra !== "") {
               if (letra === "X") {
                 document.getElementById("state").innerHTML = "Usted Ganó";
+                this.state = "X"
                 this.invalidarTablero();
                 return;
               } else {
                 document.getElementById("state").innerHTML = "Ganó la maquina";
+                this.state = "O"
                 this.invalidarTablero();
                 return;
               }

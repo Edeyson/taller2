@@ -14,7 +14,6 @@ export class TriquiplaymodalComponent implements OnInit {
   public juegoTriqui: JuegoTriquiI;
   public copiaJuegoTriki: JuegoTriquiI;
   public form: FormGroup;
-  public code = 0;
 
   constructor(private triquiService: TrikiService) {}
   ngOnInit(): void {
@@ -34,13 +33,35 @@ export class TriquiplaymodalComponent implements OnInit {
 
 
   public acceder(): void {
-    this.code += 1;
     this.juegoTriqui = this.form.value;
-    this.juegoTriqui.codigo = this.code;
+    this.juegoTriqui.codigo = this.getCode();
     this.juegoTriqui.estado = false;
     this.juegoTriqui.fecha = this.getDateTime();
-    this.triquiService.addJuegoTriki(this.juegoTriqui);
+    this.triquiService.addJuegoTrikiLocal(this.juegoTriqui);
   }
+getCode(): any {
+    const date = new Date();
+
+    const hour = date.getHours();
+    const h = (hour < 10 ? '0' : '') + hour;
+
+    const min = date.getMinutes();
+    const m = (min < 10 ? '0' : '') + min;
+
+    const sec = date.getSeconds();
+    const s = (sec < 10 ? '0' : '') + sec;
+
+    const year = date.getFullYear();
+
+    const month = date.getMonth() + 1;
+    const mes = (month < 10 ? '0' : '') + month;
+
+    const day = date.getDate();
+    const dia = (day < 10 ? '0' : '') + day;
+
+    return year+ mes + dia + h+ m + s;
+
+}
 
 
   getDateTime(): any {
