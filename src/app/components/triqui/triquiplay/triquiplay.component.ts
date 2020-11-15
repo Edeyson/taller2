@@ -10,11 +10,11 @@ import { TrikiService } from '../../../services/triki.service';
 export class TriquiplayComponent implements OnInit {
 
   public play;
-  public juego: JuegoTriquiI ={
-    nombre:"",
-    codigo:0,
-    estado:false,
-    fecha:""
+  public juego: JuegoTriquiI = {
+    nombre: "",
+    codigo: 0,
+    estado: false,
+    fecha: ""
   };
   public state = "E";
   public estadoVista = "--";
@@ -29,9 +29,9 @@ export class TriquiplayComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-     this.play= this.trikiService.getJuegoActual();
+    this.play = this.trikiService.getJuegoActual();
     this.juego.nombre = this.play.nombre;
-    this.juego.codigo = this.play.codigo;    
+    this.juego.codigo = this.play.codigo;
     this.juego.estado = this.play.estado;
     this.juego.fecha = this.play.fecha;
   }
@@ -39,13 +39,18 @@ export class TriquiplayComponent implements OnInit {
   public terminar(): any {
     console.log(this.tablero);
 
-    if(this.state ==="X"){
+    if (this.state === "X") {
       this.juego.estado = true;
-      this.estadoVista = "Ganó: "+this.juego.estado;
-    }else{
-      if(this.state ==="O"){
+      this.estadoVista = "Ganó: " + this.juego.estado;
+    } else {
+      if (this.state === "O") {
         this.juego.estado = false;
-        this.estadoVista = "Gano: "+this.juego.estado;
+        this.estadoVista = "Gano: " + this.juego.estado;
+      } else {
+        if (this.state === "E") {
+          this.juego.estado = false;
+          this.estadoVista = "Empate: " + true;
+        }
       }
     }
     this.trikiService.addJuegoTriki(this.juego);
