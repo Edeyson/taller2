@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Config } from 'config';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,22 @@ export class WeatherService {
 
   public getWeather(ciudad: string): any{
       return this.http.get(`${this.URI}${ciudad}&appid=${this.apiKey}`);
+  }
+
+
+  public guardarDatos(nombre: string, c: string, f: string): any {
+    return this.http.post(`${Config.baseUrl}clima/add`, {
+      usuario: nombre,
+      fecha: f,
+      ciudad: c,
+    }).subscribe(
+      (succes: any ) => {
+        console.log(succes);
+      },
+      error => {
+        console.log('error', error);
+      }
+    );
   }
 
 
