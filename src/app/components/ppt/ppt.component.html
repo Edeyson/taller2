@@ -1,7 +1,28 @@
-<div class="container Fondo">
+<div class="container FondoImg Fondo">
     <a href="" class="btn btn-primary">Atras</a>
     <div class="Centrar">
+        <table class="table">
+            <tr>
+                <td>
+                    <div id="jugador1">
+                        <h3>PLAYER 1</h3>
+                        <img id="img1" [src]="ruta1" width="80%" height="80%" />
+                    </div>
 
+                </td>
+                <td>
+                    <div id="jugador2">
+                        <h3>PLAYER 2</h3>
+
+                        <img id="img2" [src]="ruta2" width="80%" height="80%" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div id="resultats">
+
+            <div> <button id="fight" class="btn btn-primary btn-lg btn-block" (click)="jugar()">!Play!</button> </div>
+        </div>
 
     </div>
 
