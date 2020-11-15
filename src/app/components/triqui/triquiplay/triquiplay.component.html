@@ -1,7 +1,7 @@
 <div class="container Fondo">
     <a href="Triqui" class="btn btn-primary">Atras</a>
     <font id="maquina" color="white" size="4px" face="times new roman">
-        {{jugadorActual}}
+        {{play.nombre}}: "X" --- maquina: "O"
     </font>
     <br><br>
 
@@ -16,8 +16,8 @@
                         </font>
                     </td>
                     <td>
-                        <font color="white" size="6px" face="times new roman" id="code">
-                            2
+                        <font color="white" size="4px" face="times new roman" id="code">
+                            {{play.codigo}}
                         </font>
                     </td>
                 </tr>
@@ -29,7 +29,7 @@
                     </td>
                     <td>
                         <font color="white" size="4px" face="times new roman" id="name">
-                            {{jugadorActual}}
+                            {{play.nombre}}
 
                         </font>
                     </td>
@@ -41,8 +41,8 @@
                         </font>
                     </td>
                     <td>
-                        <font color="white" size="6px" face="times new roman" id="juego">
-                            --
+                        <font color="white" size="4px" face="times new roman" id="juego">
+                            {{estadoVista}}
                         </font>
                     </td>
                 </tr>
@@ -53,8 +53,8 @@
                         </font>
                     </td>
                     <td>
-                        <font color="white" size="6px" face="times new roman" id="date">
-                            hoy
+                        <font color="white" size="4px" face="times new roman" id="date">
+                            {{play.fecha}}
                         </font>
                     </td>
                 </tr>
@@ -78,11 +78,11 @@
                     </div>
                 </div>
                 <br>
-                <font color="white" id="state" size="6px" face="times new roman">
+                <font color="white" id="state" size="4px" face="times new roman">
                     --
                 </font>
                 <br>
-                <a href="Triqui"><button (click)="terminar()" class="btn btn-info btn-lg">Terminar</button></a>
+                <button (click)="terminar()" class="btn btn-info btn-lg">Terminar</button>
             </td>
         </tr>
 

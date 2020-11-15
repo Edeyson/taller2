@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JuegoTriquiI } from '../interface/juegoTriquiI';
 import { Config } from '../../../config';
-import { Observable } from 'rxjs';
+import { config } from 'process';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,12 @@ export class TrikiService {
   constructor(private http: HttpClient) { }
 
 
+  addJuegoTrikiLocal(juegoTriki: JuegoTriquiI): any {
+    localStorage.setItem('play', JSON.stringify({nombre:juegoTriki.nombre,codigo:juegoTriki.codigo, estado:juegoTriki.estado,fecha:juegoTriki.fecha}));
+  }
+
   addJuegoTriki(juegoTriki: JuegoTriquiI): any {
-    localStorage.setItem('play', JSON.stringify(juegoTriki.nombre));
-    return this.http.post<JuegoTriquiI>(`${Config.baseUrl}triki/add`, {
+    return this.http.post<JuegoTriquiI>(Config.baseUrl + 'triki/add', {
       codigo: juegoTriki.codigo,
       nombre: juegoTriki.nombre,
       estado: juegoTriki.estado,
@@ -29,7 +32,7 @@ export class TrikiService {
     );
   }
 
-  getJugadorActual(): string {
+  getJuegoActual(): string {
     return JSON.parse(localStorage.getItem('play'));
   }
 
